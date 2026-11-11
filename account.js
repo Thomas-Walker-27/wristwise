@@ -26,6 +26,7 @@ function showUser(user) {
   $('signed-out').hidden = Boolean(user);
   $('signed-in').hidden = !user;
   if (user) $('user-email').textContent = user.email;
+  document.dispatchEvent(new CustomEvent('account-state', { detail: { user } }));
 }
 async function load() {
   $('retry').hidden = true;
